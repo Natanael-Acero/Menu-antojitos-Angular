@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CategoriaComponent } from './components/categoria/categoria.component';
+import { PlatilloComponent } from './components/platillo/platillo.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: CategoriaComponent },
+  { path: 'platillo/:idCategoria', component: PlatilloComponent }
+];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+
+export const AppRoutingModule = RouterModule.forRoot(routes, { useHash: true });

@@ -1,0 +1,114 @@
+<div class="row">
+    <hr>
+    <div class=" col-lg-5 col-md-12 mt-4 mb-4">
+        <div *ngIf="insertarCategoria">
+            <app-insertar-categoria [idCategoria]="idCategoria" (terminarActualizacion)="terminarActualizacion($event)">
+            </app-insertar-categoria>
+        </div>
+        <div *ngIf="editarCategoria">
+            <app-editar-categoria [idCategoria]="idCategoria" (terminarActualizacion)="terminarActualizacion($event)">
+            </app-editar-categoria>
+        </div>
+    </div>
+
+    <div class="col-lg-7 col-md-12 mt-4 mb-4">
+
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="searchText" name="searchText" class="form-control"
+                        placeholder=" Buscar categoría...">
+                </div>
+                <div class="col-sm-1">
+
+                    <div class="dropdown show">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Exportar
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a type="button" class="dropdown-item drop-options-text" (click)="exportPDF()"><i
+                                    class="fa fa-file-pdf-o mr-1"></i> PDF</a>
+                            <a type="button" class="dropdown-item drop-options-text" (click)="exportAsXLSX()"><i
+                                    class="fa fa-file-excel-o mr-1"></i> Excel</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table class="table table-striped table-hover table-bordered mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">DESCRIPCION</th>
+                        <th scope="col" class="text-center">ACTIVO</th>
+                        <th scope="col" class="text-center">ACCIONES</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let categoria of categorias | filter: searchText | paginate:{itemsPerPage: 6, currentPage: pageActual}">
+                        <td>{{categoria.strNombre}}</td>
+                        <td>{{categoria.strDescripcion}}</td>
+                        <td class="text-center">{{categoria.blnActivo == true ? 'Sí': 'No'}}</td>
+
+                        <td class="text-center">
+                            <div class="btn-group dropleft">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ...
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a type="button" class="dropdown-item drop-options-text"
+                                        (click)="mostrarActualizar(categoria._id)">
+                                        <i class="fa fa-pen mr-1 "></i>Actualizar</a>
+                                    <a type="button" class="dropdown-item drop-options-text"
+                                        (click)="activarCategoria(categoria._id)" *ngIf="!categoria.blnActivo">
+                                        <i class="fa fa-check mr-1 "></i>Activar</a>
+                                    <a type="button" class="dropdown-item drop-options-text"
+                                        (click)="eliminarCategoria(categoria._id)" *ngIf="categoria.blnActivo">
+                                        <i class="fa fa-times mr-2"></i>Desactivar</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a type="button" class="dropdown-item drop-options-text"
+                                        [routerLink]="['/platillo', categoria._id]"><i
+                                            class="fa fa-cog mr-1"></i>Gestionar
+                                        platillos</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tr class="bg-white" *ngIf="categorias== '' || categorias === undefined && !cargando">
+                    <td colspan="4" class="text-center">
+                        <div class="alert alert-dismissible alert-light">
+                            <h5 style="height: 100%; width: 100%;">
+                                <strong> No hay registros
+                                    disponibles</strong>
+                            </h5>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr *ngIf="cargando">
+                    <td colspan="14">
+                        <div class=" alert-dismissible text-center" style="padding: .75rem 1.25rem;">
+                            <h5 style="height: 100%;width: 100%;"><strong><i
+                                        class="fa fa-spinner fa-pulse"></i>CARGANDO</strong></h5>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="mt-4 float-right fadeIn ">
+                <pagination-controls (pageChange)="pageActual=$event" previousLabel="Anterior" nextLabel="Siguiente">
+                </pagination-controls>
+            </div>
+        </div>
+
+    </div>
+</div>

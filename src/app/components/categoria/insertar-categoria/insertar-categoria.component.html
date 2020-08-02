@@ -1,0 +1,56 @@
+<div class="container">
+    <h3>Registro de categoría </h3>
+    <hr>
+</div>
+<form class="animated fadeIn fast" (ngSubmit)="registrarCategoria(forma)" #forma="ngForm" #forma2="ngForm">
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="strNombre" id="validationServer01"
+            [ngClass]="{ 'is-invalid': !strNombre.valid && strNombre.touched}" [(ngModel)]="categoria.strNombre"
+            #strNombre="ngModel" required placeholder="Categoria">
+        <div class="invalid-feedback">
+            Es necesario ingresar el nombre
+        </div>
+    </div>
+    <div class="form-group">
+
+
+
+        <div class="input-group">
+            <textarea class="form-control" aria-label="With textarea" type="text" name="strDescripcion"
+                id="validationServer02" [ngClass]="{ 'is-invalid': !strDescripcion.valid && strDescripcion.touched}"
+                [(ngModel)]="categoria.strDescripcion" #strDescripcion="ngModel" required
+                placeholder="Descripcion"></textarea>
+        </div>
+
+        <div class="invalid-feedback">
+            Es necesario ingresar una descripción
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <select class="form-control" name="blnActivo" [(ngModel)]="categoria.blnActivo" #blnActivo="ngModel"
+            id="validationServer03" required [ngClass]="{ 'is-invalid': !blnActivo.valid && blnActivo.touched}">
+            <option [ngValue]="undefined" hidden>Elige</option>
+            <option [ngValue]="true">Activo</option>
+            <option [ngValue]="false ">Inactivo</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="blnActivo.errors?.required">
+            Seleccione alguna opción
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button type="reset" class="btn btn-outline-danger btn-block">Cancelar</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-outline-success btn-block"
+                    [disabled]="!forma.valid">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+</form>
