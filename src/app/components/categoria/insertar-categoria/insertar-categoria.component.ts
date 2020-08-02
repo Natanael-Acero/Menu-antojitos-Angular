@@ -39,7 +39,7 @@ export class InsertarCategoriaComponent implements OnInit {
 
       Toast.fire({
         icon: 'success',
-        title: `¡La categoria "${this.categoria.strNombre}" fue agregado correctamente!`
+        title: `¡La categoría "${this.categoria.strNombre}" fue agregado correctamente!`
       });
 
       forma.controls['strNombre'].reset();

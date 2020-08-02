@@ -76,7 +76,7 @@ export class CategoriaComponent implements OnInit {
       const nombre = data.cont.strNombre;
       Toast.fire({
         icon: 'success',
-        title: `¡La categoria " ${nombre} " se desactivo correctamente!`
+        title: `¡La categoría " ${nombre} " se desactivo correctamente!`
       });
       this.obtenerCategorias();
     }).catch((err) => {
@@ -93,7 +93,7 @@ export class CategoriaComponent implements OnInit {
       const nombre = data.cont.strNombre;
       Toast.fire({
         icon: 'success',
-        title: `¡La categoria " ${nombre} " se activo correctamente!`
+        title: `¡La categoría " ${nombre} " se activo correctamente!`
       });
       this.obtenerCategorias();
     }).catch((err) => {

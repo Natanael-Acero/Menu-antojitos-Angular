@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row mr-5 ml-5">
     <hr>
-    <div class=" col-lg-5 col-md-12 mt-4 mb-4">
+    <div class=" col-lg-4 col-md-12 mt-4 mb-4">
         <div *ngIf="insertarCategoria" class="animated fadeIn fast">
             <app-insertar-categoria [idCategoria]="idCategoria" (terminarActualizacion)="terminarActualizacion($event)">
             </app-insertar-categoria>
@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="col-lg-7 col-md-12 mt-4 mb-4 animated fadeIn fast">
+    <div class="col-lg-8 col-md-12 mt-4 mb-4 animated fadeIn fast">
 
         <div class="container">
             <div class="row mb-2">
@@ -28,10 +28,10 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a type="button" class="dropdown-item drop-options-text" (click)="exportPDF()"><i
-                                    class="fa fa-file-pdf-o mr-1"></i> PDF</a>
-                            <a type="button" class="dropdown-item drop-options-text" (click)="exportAsXLSX()"><i
-                                    class="fa fa-file-excel-o mr-1"></i> Excel</a>
+                            <a type="button" class="dropdown-item drop-options-text text-danger"
+                                (click)="exportPDF()"><i class="fa fa-file-pdf-o mr-1"></i> PDF</a>
+                            <a type="button" class="dropdown-item drop-options-text text-success"
+                                (click)="exportAsXLSX()"><i class="fa fa-file-excel-o mr-1"></i> Excel</a>
                         </div>
                     </div>
 
@@ -65,17 +65,17 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a type="button" class="dropdown-item drop-options-text"
+                                    <a type="button" class="dropdown-item drop-options-text text-warning"
                                         (click)="mostrarActualizar(categoria._id)">
                                         <i class="fa fa-pen mr-1 "></i>Actualizar</a>
-                                    <a type="button" class="dropdown-item drop-options-text"
+                                    <a type="button" class="dropdown-item drop-options-text text-success"
                                         (click)="activarCategoria(categoria._id)" *ngIf="!categoria.blnActivo">
                                         <i class="fa fa-check mr-1 "></i>Activar</a>
-                                    <a type="button" class="dropdown-item drop-options-text"
+                                    <a type="button" class="dropdown-item drop-options-text text-danger"
                                         (click)="eliminarCategoria(categoria._id)" *ngIf="categoria.blnActivo">
                                         <i class="fa fa-times mr-2"></i>Desactivar</a>
                                     <div class="dropdown-divider"></div>
-                                    <a type="button" class="dropdown-item drop-options-text"
+                                    <a type="button" class="dropdown-item drop-options-text text-primary"
                                         [routerLink]="['/platillo', categoria._id]"><i
                                             class="fa fa-cog mr-1"></i>Gestionar
                                         platillos</a>

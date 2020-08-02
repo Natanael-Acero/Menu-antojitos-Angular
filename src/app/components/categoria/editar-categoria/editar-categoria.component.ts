@@ -53,7 +53,7 @@ export class EditarCategoriaComponent implements OnInit {
 
       Toast.fire({
         icon: 'success',
-        title: `¡El país "${this.categoria.strNombre}" fue actualizado correctamente!`
+        title: `¡La categoría "${this.categoria.strNombre}" fue actualizado correctamente!`
       });
       this.terminarActualizacion.emit();
 
