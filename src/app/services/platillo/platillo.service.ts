@@ -12,7 +12,7 @@ export class PlatilloService {
     constructor(private http: HttpClient) { }
 
     obtenerPlatilloidPlatillo(idPlatillo: String) {
-        return this.http.get(`${this.url}/obtener/${idPlatillo}`).toPromise();
+        return this.http.get(`${this.url}/obtener/platillo/${idPlatillo}`).toPromise();
     }
 
     obtenerPlatillosidCategoria(idCategoria: String) {

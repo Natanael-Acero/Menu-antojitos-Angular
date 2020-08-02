@@ -7,7 +7,7 @@
     <div class="form-group">
         <input class="form-control" type="text" name="strNombre" id="validationServer01"
             [ngClass]="{ 'is-invalid': !strNombre.valid && strNombre.touched}" [(ngModel)]="categoria.strNombre"
-            #strNombre="ngModel" required placeholder="Categoria">
+            #strNombre="ngModel" required placeholder="Nombre de la categoría">
         <div class="invalid-feedback">
             Es necesario ingresar el nombre
         </div>
@@ -17,10 +17,10 @@
 
 
         <div class="input-group">
-            <textarea class="form-control" aria-label="With textarea" type="text" name="strDescripcion"
+            <textarea rows="7" class="form-control" aria-label="With textarea" type="text" name="strDescripcion"
                 id="validationServer02" [ngClass]="{ 'is-invalid': !strDescripcion.valid && strDescripcion.touched}"
                 [(ngModel)]="categoria.strDescripcion" #strDescripcion="ngModel" required
-                placeholder="Descripcion"></textarea>
+                placeholder="Descripción"></textarea>
         </div>
 
         <div class="invalid-feedback">
@@ -44,11 +44,10 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <button type="reset" class="btn btn-outline-danger btn-block">Cancelar</button>
+                <button type="reset" class="btn btn-danger btn-block">Cancelar</button>
             </div>
             <div class="col">
-                <button type="submit" class="btn btn-outline-success btn-block"
-                    [disabled]="!forma.valid">Agregar</button>
+                <button type="submit" class="btn btn-success btn-block" [disabled]="!forma.valid">Agregar</button>
             </div>
         </div>
     </div>

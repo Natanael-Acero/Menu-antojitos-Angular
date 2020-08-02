@@ -1,1 +1,83 @@
-<p>editar-platillo works!</p>
+<div class="container">
+    <h3>Actualización de platillo </h3>
+    <hr>
+</div>
+<form class="animated fadeIn fast" (ngSubmit)="actualizar()" #forma="ngForm">
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="strNombre" id="validationServer01"
+            [ngClass]="{ 'is-invalid': !strNombre.valid && strNombre.touched}" [(ngModel)]="platillo.strNombre"
+            #strNombre="ngModel" required placeholder="Nombre del platillo">
+        <div class="invalid-feedback">
+            Es necesario ingresar el nombre
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <textarea rows="3" class="form-control" aria-label="With textarea" type="text" name="strDescripcion"
+                id="validationServer02" [ngClass]="{ 'is-invalid': !strDescripcion.valid && strDescripcion.touched}"
+                [(ngModel)]="platillo.strDescripcion" #strDescripcion="ngModel" required
+                placeholder="Descripción"></textarea>
+        </div>
+        <div class="invalid-feedback">
+            Es necesario ingresar una descripción
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <textarea rows="3" class="form-control" aria-label="With textarea" type="text" name="strIngredientes"
+                id="validationServer03" [ngClass]="{ 'is-invalid': !strIngredientes.valid && strIngredientes.touched}"
+                [(ngModel)]="platillo.strIngredientes" #strIngredientes="ngModel" required
+                placeholder="Ingredientes"></textarea>
+        </div>
+        <div class="invalid-feedback">
+            Es necesario ingresar los ingredientes
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="number" name="nmbPiezas" id="validationServer04"
+            [ngClass]="{ 'is-invalid': !nmbPiezas.valid && nmbPiezas.touched}" [(ngModel)]="platillo.nmbPiezas"
+            #nmbPiezas="ngModel" required placeholder="Numero de piezas">
+        <div class="invalid-feedback">
+            Es necesario ingresar el numero de piezas
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="number" name="nmbPrecio" id="validationServer05"
+            [ngClass]="{ 'is-invalid': !nmbPrecio.valid && nmbPrecio.touched}" [(ngModel)]="platillo.nmbPrecio"
+            #nmbPrecio="ngModel" required placeholder="Precio">
+        <div class="invalid-feedback">
+            Es necesario ingresar el precio
+        </div>
+    </div>
+
+    <div class="form-group">
+        <select class="form-control" name="blnActivo" [(ngModel)]="platillo.blnActivo" #blnActivo="ngModel"
+            id="validationServer06" required [ngClass]="{ 'is-invalid': !blnActivo.valid && blnActivo.touched}">
+            <option [ngValue]="undefined" hidden>Elige</option>
+            <option [ngValue]="true">Activo</option>
+            <option [ngValue]="false ">Inactivo</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="blnActivo.errors?.required">
+            Seleccione alguna opción
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button (click)="cancelar()" type="button " class="btn btn-danger btn-block">Cancelar</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success btn-block" [disabled]="!forma.valid">Actualizar</button>
+            </div>
+        </div>
+    </div>
+
+</form>

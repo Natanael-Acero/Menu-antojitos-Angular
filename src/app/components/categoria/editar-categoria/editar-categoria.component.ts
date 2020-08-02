@@ -18,7 +18,7 @@ const Toast = Swal.mixin({
 export class EditarCategoriaComponent implements OnInit {
 
   editarCategoria = true;
-  registrarPais = false;
+  registrarCategoria = false;
   idCat: string;
 
   @Input() set idCategoria(value) {

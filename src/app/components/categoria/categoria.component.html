@@ -1,17 +1,17 @@
 <div class="row">
     <hr>
     <div class=" col-lg-5 col-md-12 mt-4 mb-4">
-        <div *ngIf="insertarCategoria">
+        <div *ngIf="insertarCategoria" class="animated fadeIn fast">
             <app-insertar-categoria [idCategoria]="idCategoria" (terminarActualizacion)="terminarActualizacion($event)">
             </app-insertar-categoria>
         </div>
-        <div *ngIf="editarCategoria">
+        <div *ngIf="editarCategoria" class="animated fadeIn fast">
             <app-editar-categoria [idCategoria]="idCategoria" (terminarActualizacion)="terminarActualizacion($event)">
             </app-editar-categoria>
         </div>
     </div>
 
-    <div class="col-lg-7 col-md-12 mt-4 mb-4">
+    <div class="col-lg-7 col-md-12 mt-4 mb-4 animated fadeIn fast">
 
         <div class="container">
             <div class="row mb-2">

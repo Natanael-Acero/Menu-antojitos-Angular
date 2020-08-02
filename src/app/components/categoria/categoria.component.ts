@@ -20,6 +20,7 @@ export class CategoriaComponent implements OnInit {
 
   editarCategoria: boolean = false;
   insertarCategoria: boolean = true;
+
   categorias: any;
   idCategoria: string;
   searchText: string;

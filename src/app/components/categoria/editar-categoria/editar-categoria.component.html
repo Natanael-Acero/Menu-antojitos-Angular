@@ -7,18 +7,23 @@
     <div class="form-group">
         <input class="form-control" type="text" name="strNombre" id="validationServer01"
             [ngClass]="{ 'is-invalid': !strNombre.valid && strNombre.touched}" [(ngModel)]="categoria.strNombre"
-            #strNombre="ngModel" required placeholder="Categoria">
+            #strNombre="ngModel" required placeholder="Nombre de la Categoría">
         <div class="invalid-feedback">
             Es necesario ingresar el nombre
         </div>
     </div>
     <div class="form-group">
-        <input class="form-control" type="text" name="strDescripcion" id="validationServer02"
-            [ngClass]="{ 'is-invalid': !strDescripcion.valid && strDescripcion.touched}"
-            [(ngModel)]="categoria.strDescripcion" #strDescripcion="ngModel" required placeholder="Descripcion">
+        <div class="input-group">
+            <textarea rows=5 class="form-control" aria-label="With textarea" type="text" name="strDescripcion"
+                id="validationServer02" [ngClass]="{ 'is-invalid': !strDescripcion.valid && strDescripcion.touched}"
+                [(ngModel)]="categoria.strDescripcion" #strDescripcion="ngModel" required
+                placeholder="Descripción"></textarea>
+        </div>
+
         <div class="invalid-feedback">
             Es necesario ingresar una descripción
         </div>
+
     </div>
     <div class="form-group">
         <select class="form-control" name="blnActivo" [(ngModel)]="categoria.blnActivo" #blnActivo="ngModel"
@@ -34,11 +39,10 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <button (click)="cancelar()" type="button " class="btn btn-outline-danger btn-block">Cancelar</button>
+                <button (click)="cancelar()" type="button " class="btn btn-danger btn-block">Cancelar</button>
             </div>
             <div class="col">
-                <button type="submit" class="btn btn-outline-success btn-block"
-                    [disabled]="!forma.valid">Actualizar</button>
+                <button type="submit" class="btn btn-success btn-block" [disabled]="!forma.valid">Actualizar</button>
             </div>
         </div>
     </div>
