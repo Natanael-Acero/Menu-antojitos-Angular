@@ -21,8 +21,8 @@ export class PlatilloComponent implements OnInit {
 
   editarPlatillo: boolean = false;
   insertarPlatillo: boolean = true;
-  platillos: any;
   idPlatillo: string;
+  platillos: any;
   searchText: string;
   pageActual: number = 1;
   arraPlatillos = [];
@@ -78,11 +78,11 @@ export class PlatilloComponent implements OnInit {
   }
 
   eliminarPlatillo(id: string) {
-    this.platilloService.desactivarPlatillo(id).then((data: any) => {
-      const nombre = data.cont.strNombre;
+    this.platilloService.desactivarPlatillo(id).then((resp: any) => {
+      const platillo = resp.cont.strNombre;
       Toast.fire({
         icon: 'success',
-        title: `¡El platillo " ${nombre} " se desactivo correctamente!`
+        title: `¡El platillo " ${platillo} " se desactivó correctamente!`
       });
       this.obtenerPlatillos();
     }).catch((err) => {
@@ -95,11 +95,11 @@ export class PlatilloComponent implements OnInit {
   }
 
   activarPlatillo(id: string) {
-    this.platilloService.activarPlatillo(id).then((data: any) => {
-      const nombre = data.cont.strNombre;
+    this.platilloService.activarPlatillo(id).then((resp: any) => {
+      const platillo = resp.cont.strNombre;
       Toast.fire({
         icon: 'success',
-        title: `¡El platillo " ${nombre} " se activo correctamente!`
+        title: `¡El platillo " ${platillo} " se activó correctamente!`
       });
       this.obtenerPlatillos();
     }).catch((err) => {

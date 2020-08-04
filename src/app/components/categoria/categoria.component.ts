@@ -52,7 +52,7 @@ export class CategoriaComponent implements OnInit {
 
         let element = [
           categoria.strNombre.replace(/\:null/gi, ':""'),
-          categoria.strDescripcion,
+          categoria.strDescripcion.replace(/\:null/gi, ':""'),
           categoria.blnActivo ? 'Sí' : 'No'
 
         ];
@@ -72,11 +72,11 @@ export class CategoriaComponent implements OnInit {
   }
 
   eliminarCategoria(id: string) {
-    this.categoriaService.desactivarCategoria(id).then((data: any) => {
-      const nombre = data.cont.strNombre;
+    this.categoriaService.desactivarCategoria(id).then((resp: any) => {
+      const categoria = resp.cont.strNombre;
       Toast.fire({
         icon: 'success',
-        title: `¡La categoría " ${nombre} " se desactivo correctamente!`
+        title: `¡La categoría " ${categoria} " se desactivó correctamente!`
       });
       this.obtenerCategorias();
     }).catch((err) => {
@@ -89,11 +89,11 @@ export class CategoriaComponent implements OnInit {
   }
 
   activarCategoria(id: string) {
-    this.categoriaService.activarCategoria(id).then((data: any) => {
-      const nombre = data.cont.strNombre;
+    this.categoriaService.activarCategoria(id).then((resp: any) => {
+      const categoria = resp.cont.strNombre;
       Toast.fire({
         icon: 'success',
-        title: `¡La categoría " ${nombre} " se activo correctamente!`
+        title: `¡La categoría " ${categoria} " se activó correctamente!`
       });
       this.obtenerCategorias();
     }).catch((err) => {
